@@ -2,13 +2,15 @@ const express = require("express");
 const morgan=require('morgan');
 const helmet=require('helmet');
 const db = require("../data/dbConfig.js");
+const router=require('./accountRouter.js');
+
 
 const server = express();
 
 server.use(express.json());
 server.use(morgan());
 server.use(helmet());
-
+server.use('/api/accounts', router);
 
 
 server.get('/', (req,res)=>{
